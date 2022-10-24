@@ -68,7 +68,7 @@ const Index = ({ products }) => {
                     )) : (
                         <div className='w-full font-[poppins] flex flex-col justify-center items-center '>
                             <h2 className='p-[10px]'>
-                                Can't find products
+                                Can not find products
                             </h2>
                             <button type='button' onClick={()=> {
                                 setSearchTerm('');

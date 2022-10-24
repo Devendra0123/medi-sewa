@@ -1,0 +1,10 @@
+export { default as ProductSection } from './ProductSection';
+export { default as HeroBanner } from './HeroBanner';
+export { default as Product } from './Product';
+export { default as FAQ } from './FAQ';
+export { default as PdfSection } from './PdfSection';
+export { default as Cart } from './Cart';
+export { default as PostDetails } from './PostDetails';
+export { default as Categories } from './Categories';
+export { default as Loader } from './Loader';
+export { default as PastQuestionSection } from './PastQuestionSection';

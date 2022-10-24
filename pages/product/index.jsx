@@ -6,7 +6,7 @@ import { productCategories } from '../../utils/categories';
 import {searchQuery} from '../../utils/query'
 import { IoMdSearch } from 'react-icons/io';
 
-const index = ({ products }) => {
+const Index = ({ products }) => {
     const router = useRouter();
 
     const [data, setData] = useState([]);
@@ -98,4 +98,4 @@ export async function getStaticProps(ctx) {
     }
 }
 
-export default index
+export default Index

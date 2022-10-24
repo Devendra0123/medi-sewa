@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { client, urlFor } from '../../lib/client';
 
-const index = ({ebooks}) => {
+const Index = ({ebooks}) => {
     return (
         <div className="bg-red-200 rounded p-[20px]  mt-[50px]" >
             <div className="flex flex-wrap justify-center gap-[70px]">
@@ -40,4 +40,4 @@ export async function getStaticProps(ctx) {
     }
 }
 
-export default index
+export default Index

@@ -2,7 +2,7 @@ import React from 'react';
 import { client } from '../../lib/client';
 import QuestionCard from '../../components/QuestionCard'
 
-const index = ({questions}) => {
+const Index = ({questions}) => {
     return (
         <div className="bg-teal-100 rounded p-[20px]  mt-[50px]" >
             <div className="flex flex-wrap justify-center gap-[70px]">
@@ -33,4 +33,4 @@ export async function getStaticProps(ctx) {
     }
 }
 
-export default index
+export default Index

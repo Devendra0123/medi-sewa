@@ -15,6 +15,13 @@ const Layout = ({ children }) => {
       </header>
       <main className="main-container">
         {children}
+
+        <div>
+          <MessengerCustomerChat
+            pageId={process.env.NEXT_PUBLIC_FB_PAGE_ID}
+            appId={process.env.NEXT_PUBLIC_FB_APP_ID}
+          />
+        </div>
       </main>
       <footer>
         <Footer />

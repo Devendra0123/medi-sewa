@@ -2,6 +2,7 @@ import type { GetStaticProps } from 'next'
 
 import {HeroBanner,ProductSection,FAQ,PdfSection,PastQuestionSection} from '../components'
 import DeliverySection from '../components/DeliverySection';
+import ChatBot from '../components/ChatBot';
 
 import {client} from '../lib/client';
 import type {ProductType,BannerType,EbookType,PastYearQuestionType} from '../type'
@@ -24,6 +25,7 @@ const Home: React.FC<Props> = ({ scrubProducts, bannerData, dentalProducts, eboo
       <PdfSection ebooks={ebooks} />
       <PastQuestionSection questions={pastQuestions} />
       <FAQ />
+      <ChatBot />
     </div>
   )
 }

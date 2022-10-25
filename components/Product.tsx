@@ -34,7 +34,7 @@ const Product: React.FC<Props> = ({ product }) => {
             <p className="product-name">{product.name}</p>
             <p className="product-price">Rs.{product.price}</p>
             <p className='text-center'>
-              {product.details.length > 40 ? product.details.slice(0,40) + '...' : product.details}
+              {product?.details?.length > 40 ? product.details.slice(0,40) + '...' : product.details}
             </p>
             <button type='button' onClick={addToCart} className='bg-cyan-600 px-[10px] py-[6px] rounded text-white mt-[10px] hover:bg-teal-500'>
               Add to cart

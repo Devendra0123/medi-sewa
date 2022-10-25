@@ -35,8 +35,20 @@ const Navbar = () => {
           </div>
         </div>
 
-        <Link href='/product'>
-          <p className='cursor-pointer font-medium text-xl text-teal-400 ml-[20px] hover:underline underline-offset-8 decoration-orange-500 transition ease-in-out delay-150 duration-300'>Store</p>
+        <div className="dropdown">
+          <Link href='/product'>
+            <p className='cursor-pointer font-medium text-xl text-teal-400 ml-[20px] hover:underline underline-offset-8 decoration-orange-500 transition ease-in-out delay-150 duration-300'>Store</p>
+          </Link>
+          <div className="dropdown-content">
+            <Link href="/product">Medical Store</Link>
+            <Link href="/product?category=dental-products">Dental Store</Link>
+            <Link href="/medical-books">Medical Book</Link>
+            <Link href="/second-hand-items">Second Hand Store</Link>
+          </div>
+        </div>
+       
+        <Link href='/product?category=scrub'>
+          <p className='cursor-pointer font-medium text-xl text-teal-400 ml-[20px] hover:underline underline-offset-8 decoration-orange-500 transition ease-in-out delay-150 duration-300'>Scrub</p>
         </Link>
 
         <Link href='/ebook'>
@@ -45,10 +57,6 @@ const Navbar = () => {
 
         <Link href='/past-question'>
           <p className='cursor-pointer font-medium text-xl text-teal-400 ml-[20px] hover:underline underline-offset-8 decoration-orange-500 transition ease-in-out delay-150 duration-300'>Past Question</p>
-        </Link>
-
-        <Link href='/blog'>
-          <p className='cursor-pointer font-medium text-xl text-teal-400 ml-[20px] hover:underline underline-offset-8 decoration-orange-500 transition ease-in-out delay-150 duration-300'>Blog</p>
         </Link>
 
         <div

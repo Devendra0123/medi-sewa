@@ -27,3 +27,5 @@ export const allBlogsQuery = () => {
     const query = `*[_type == "product" && name match '${searchTerm}*' || categories match '${searchTerm}*' || details match '${searchTerm}*']`;
     return query;
   };
+
+

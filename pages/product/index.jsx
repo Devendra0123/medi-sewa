@@ -16,11 +16,11 @@ const Index = ({ products }) => {
     useEffect(() => {
         if (searchTerm !== '') {
           setLoading(true);
-          const query = searchQuery(searchTerm.toLowerCase());
-          client.fetch(query).then((data) => {
-            setData(data);
-            setLoading(false);
-          });
+          const items = products.filter(item => item.name.toLowerCase().includes(searchTerm.toLowerCase()) || item.categories[0].toLowerCase().includes(searchTerm.toLowerCase()) || item.details.toLowerCase().includes(searchTerm.toLowerCase()))
+          if(items.length !== 0){
+              setData(items);
+              return;
+          }
         } else {
           
             setData(products);
@@ -30,14 +30,21 @@ const Index = ({ products }) => {
       }, [searchTerm]);
 
     useEffect(() => {
-        const category = router.query.category
-        if (category) {
+        const category = router.query.category;
+        const subCategory = router.query.subcategory;
+        if(category && subCategory){
+            const items = products?.filter(item => item?.categories[0] === category && item?.subCategories[0] === subCategory);
+            items ? setData(items) : setData([]) ;
+            return;
+        }
+        if (category && !subCategory) {
             const items = products?.filter(item => item.categories[0] === category);
-            items ? setData(items) : setData([])
+            items ? setData(items) : setData([]);
+            return;
         } else {
             setData(products)
         }
-    }, [router.query.category])
+    }, [router.query.category,router.query.subcategory])
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-[30px]">

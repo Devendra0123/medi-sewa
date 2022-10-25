@@ -22,6 +22,31 @@ export interface ProductType {
     }[];
 }
 
+export type MedicalBookType = {
+    _createdAt: date;
+    _id: string;
+    _rev: string;
+    _type: string;
+    _updatedAt: date;
+    categories: string[];
+    author: string;
+    description: string;
+    name: string;
+    publication: string;
+    slug: {
+        _type: string;
+        current: string
+    };
+    image: {
+        _key: string;
+        _type: string;
+        asset: {
+            _ref: string;
+            _type: string
+        }
+    }[];
+}
+
 export type BannerType = {
     _createdAt: date;
     _id: string;

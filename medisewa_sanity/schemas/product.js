@@ -45,7 +45,39 @@ export default {
               list: [ 
                 {value: 'dental-products', title: 'Dental Products'},
                 {value: 'scrub', title: 'Scrub'}, 
-                {value: 'others', title: 'Others'},          
+                {value: 'medical-products', title: 'Medical Products'},          
+                ],
+                layout: 'radio' 
+              },
+          },
+          {
+            name: 'subCategories',
+            title: 'Sub Categories', 
+            type: 'array',
+            of: [{type: 'string'}],
+            options: {
+              list: [
+                {value: 'scrub', title: 'Scrub and Apron'},  
+                {value: 'medical-product', title: 'Medical Products'}, 
+                {value: 'prosthodontics', title: 'Prosthodontic Products'},
+                {value: 'conservative-endodontics', title: 'Conservative and Endodontics Products'}, 
+                {value: 'orthodontics', title: 'Orthodontic Products'}, 
+                {value: 'oral-maxillofacial-surgery', title: 'Oral Maxillofacial Surgery Products'},
+                {value: 'oral-anatomy-pathology', title: 'Oral Anatomy and Pathology Products'}, 
+                {value: 'pedodontics', title: 'Pedodontics Products'},           
+                ],
+                layout: 'radio' 
+              },
+          },
+          {
+            name: 'newOrOld',
+            title: 'New or Old', 
+            type: 'array',
+            of: [{type: 'string'}],
+            options: {
+              list: [ 
+                {value: 'new', title: 'New Product'},
+                {value: 'old', title: 'Second Hand Product'},          
                 ],
                 layout: 'radio' 
               },

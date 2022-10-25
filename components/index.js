@@ -7,4 +7,6 @@ export { default as Cart } from './Cart';
 export { default as PostDetails } from './PostDetails';
 export { default as Categories } from './Categories';
 export { default as Loader } from './Loader';
+export { default as MedicalBookSection } from './MedicalBookSection';
 export { default as PastQuestionSection } from './PastQuestionSection';
+export { default as SecondHandMarket } from './SecondHandMarket';

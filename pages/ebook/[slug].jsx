@@ -105,7 +105,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
 
     const ebook = await client.fetch(query);
     const ebooks = await client.fetch(ebooksQuery);
-    console.log(ebook)
+
     return {
         props: { ebook, ebooks }
     }

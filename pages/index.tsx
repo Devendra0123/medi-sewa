@@ -1,11 +1,12 @@
 import type { GetStaticProps } from 'next'
 
-import {HeroBanner,ProductSection,FAQ,PdfSection,PastQuestionSection} from '../components'
+import {HeroBanner,ProductSection,FAQ,PdfSection,PastQuestionSection, MedicalBookSection, SecondHandMarket} from '../components'
 import DeliverySection from '../components/DeliverySection';
 import ChatBot from '../components/ChatBot';
 
 import {client} from '../lib/client';
-import type {ProductType,BannerType,EbookType,PastYearQuestionType} from '../type'
+import type {MedicalBookType,ProductType,BannerType,EbookType,PastYearQuestionType} from '../type'
+
 type Props = {
   item: ProductType,
   scrubProducts: ProductType[],
@@ -13,17 +14,22 @@ type Props = {
   bannerData: BannerType[],
   ebooks: EbookType[],
   pastQuestions: PastYearQuestionType[],
+  medicalBooks: MedicalBookType[],
+  oldBooks: MedicalBookType[],
+  oldProducts: ProductType[]
 }
-const Home: React.FC<Props> = ({ scrubProducts, bannerData, dentalProducts, ebooks, pastQuestions }) => {
+const Home: React.FC<Props> = ({ scrubProducts,oldProducts,oldBooks, bannerData, dentalProducts, ebooks, pastQuestions,medicalBooks }) => {
  
   return (
     <div className=''>
       <HeroBanner bannerData={bannerData} />
       <ProductSection products={scrubProducts} category='scrub' store='Scrub store' bgChange={false} />
       <ProductSection products={dentalProducts} category='dental-products' store='Dental store' bgChange={true} />
+      <MedicalBookSection books={medicalBooks} />
       <DeliverySection />
       <PdfSection ebooks={ebooks} />
       <PastQuestionSection questions={pastQuestions} />
+      <SecondHandMarket products={oldProducts} books={oldBooks} />
       <FAQ />
       <ChatBot />
     </div>
@@ -33,6 +39,9 @@ const Home: React.FC<Props> = ({ scrubProducts, bannerData, dentalProducts, eboo
 export const getStaticProps:GetStaticProps = async () => {
   const query = '*[_type == "product"]';
   const products = await client.fetch(query);
+
+  const bookQuery = '*[_type == "medical-books"]';
+  const medicalBooks = await client.fetch(bookQuery);
 
   const bannerQuery = '*[_type == "banner"]';
   const bannerData = await client.fetch(bannerQuery);
@@ -47,15 +56,19 @@ export const getStaticProps:GetStaticProps = async () => {
   }`;
   const pastQuestions = await client.fetch(pastQuestionQuery);
 
-  const scrubProducts = products.filter((item: any)=> item.categories[0] === 'scrub');
-  const dentalProducts = products.filter((item: any)=> item.categories[0] === 'dental-products');
+  const scrubProducts = products.filter((item: any)=> item.categories[0] === 'scrub' && item.newOrOld[0] === 'new');
+  const dentalProducts = products.filter((item: any)=> item.categories[0] === 'dental-products' && item.newOrOld[0] === 'new');
+  const oldProducts = products.filter((item: any)=> item.newOrOld[0] === 'old');
+  const oldBooks = medicalBooks.filter((item: any)=> item.newOrOld[0] === 'old');
 
   if(scrubProducts.length > 3) scrubProducts.length = 3;
   if(dentalProducts.length > 3) dentalProducts.length = 3;
- 
+  if(medicalBooks.length > 4) scrubProducts.length = 4;
+  if(oldBooks.length > 4) scrubProducts.length = 4;
+  if(oldProducts.length > 4) scrubProducts.length = 4;
   return {
     props: {
-      scrubProducts, bannerData, dentalProducts, ebooks, pastQuestions
+      medicalBooks,scrubProducts,oldProducts,oldBooks, bannerData, dentalProducts, ebooks, pastQuestions
     }
   }
 }

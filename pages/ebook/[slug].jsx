@@ -10,11 +10,11 @@ const EbookDetails = ({ ebooks, ebook }) => {
 
     return (
         <div className='mt-[30px]'>
-            <div className='flex'>
-                <div>
+            <div className='flex flex-col md:flex-row'>
+                <div className='flex justify-center'>
                     <img src={urlFor(image && image).url()} className="product-detail-image" />
                 </div>
-                <div className='px-[20px]'>
+                <div className='p-[20px]'>
                     <h2 className='font-bold text-xl'>
                         {name}
                     </h2>
@@ -44,7 +44,7 @@ const EbookDetails = ({ ebooks, ebook }) => {
 
             <div>
                 <div className="maylike-products-wrapper">
-                    <h2>You may like</h2>
+                    <h2 className='font-bold font-[poppins] text-center text-lg'>You may like</h2>
                     <div className="marquee">
                         <div className="maylike-products-container track">
                             {ebooks.map(({ name, image, _id, slug }) => (

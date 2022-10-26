@@ -4,8 +4,8 @@ import QuestionCard from '../../components/QuestionCard'
 
 const Index = ({questions}) => {
     return (
-        <div className="bg-teal-100 rounded p-[20px]  mt-[50px]" >
-            <div className="flex flex-wrap justify-center gap-[70px]">
+        <div className="bg-gradient-to-r from-teal-500 rounded p-[20px]  mt-[20px] lg:mt-[50px]" >
+            <div className="flex flex-wrap justify-center gap-[30px] lg:gap-[70px]">
                  
             {
             questions?.map((item,index)=>(

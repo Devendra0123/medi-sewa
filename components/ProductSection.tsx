@@ -37,7 +37,7 @@ const ProductSection: React.FC<Props> = ({ products, category, store, bgChange }
             </div>
 
             {/*........Right Div ........*/}
-            <div className='w-full px-[0px] py-[20px] md:p-[20px] flex grow justify-start items-center flex-nowrap overflow-x-scroll'>
+            <div className='w-full gap-x-[30px] px-[10px] py-[20px] md:p-[20px] flex grow justify-start items-center flex-nowrap overflow-x-scroll'>
                 {products?.map((product) => <Product key={product?._id} product={product} />)}
             </div>
         </div>

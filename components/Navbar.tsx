@@ -116,7 +116,7 @@ const Navbar = () => {
       </div>
 
       <div className='md:hidden'>
-        <RiMenu3Line onClick={() => setToggle(prev => !prev)} className='font-bold text-2xl text-orange-500 cursor-pointer' />
+        <RiMenu3Line onClick={() => setToggle(prev => !prev)} className='font-bold text-4xl text-orange-500 cursor-pointer' />
       </div>
 
       {showCart && <Cart />}

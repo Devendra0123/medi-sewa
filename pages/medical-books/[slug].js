@@ -9,16 +9,16 @@ const BookDetails = ({ books, book }) => {
 
     const { image, name, description, author, publication, price } = book;
     const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
-  
+
     const handleBuyNow = () => {
-      onAdd(product, qty);
-  
-      setShowCart(true);
+        onAdd(product, qty);
+
+        setShowCart(true);
     }
     return (
         <div className='mt-[30px]'>
-            <div className='flex'>
-                <div className='mr-[30px]'>
+            <div className='flex flex-col lg:flex-row'>
+                <div className='flex justify-center w-full lg:mr-[30px]'>
                     <img src={urlFor(image[0] && image[0]).url()} className="product-detail-image" />
                 </div>
                 <div className="product-detail-desc">
@@ -52,20 +52,20 @@ const BookDetails = ({ books, book }) => {
 
             <div>
                 <div className="maylike-products-wrapper">
-                    <h2>You may like</h2>
+                    <h2 className='font-bold font-[poppins] text-center text-lg'>You may like</h2>
                     <div className="marquee">
                         <div className="maylike-products-container track">
                             {books?.map(({ name, image, _id, slug }) => (
                                 <Link key={_id} href={`/book/${slug.current}`}>
-                                    <div>
+                                    <div className='flex flex-col items-center'>
                                         <Image
                                             src={urlFor(image[0] && image[0]).url()}
                                             width={150}
                                             height={200}
                                             className="rounded"
                                         />
-                                        <p className='font-[poppins] w-[15rem]'>
-                                            {name}
+                                        <p className='font-[poppins] w-[15rem] text-center'>
+                                            {name.length > 15 ? name.slice(0, 15) + '...' : name}
                                         </p>
                                     </div>
                                 </Link>

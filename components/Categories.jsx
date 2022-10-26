@@ -9,7 +9,7 @@ const Categories = ({ categories, path }) => {
   const activeStyle = `block flex flex-col font-medium text-md pl-[10px] z-10`;
 
   return (
-    <div className="bg-orange-200 shadow-lg rounded-lg p-8 pb-12 mb-8">
+    <div className="bg-orange-300 shadow-lg rounded-lg p-8 pb-12 mb-8">
       <h3 className="text-xl mb-8 font-semibold border-b pb-4">Categories</h3>
       {categories?.map((category, index) => (
         <div key={index}

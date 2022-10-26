@@ -3,18 +3,20 @@ import { useRouter } from 'next/router'
 import { Categories } from '../../components';
 import { client } from '../../lib/client';
 import { bookCategories } from '../../utils/categories';
-import { IoMdSearch } from 'react-icons/io';
 import { urlFor } from '../../lib/client';
 import Image from 'next/image';
 import Link from 'next/link'
+import {BsThreeDots} from 'react-icons/bs';
 
 const Index = ({ books }) => {
     const router = useRouter();
 
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [toggle, setToggle] = useState(false)
 
     useEffect(() => {
+        setToggle(false)
         const category = router.query.category
         if (category) {
             const items = books?.filter(item => item.categories[0] === category);
@@ -27,13 +29,18 @@ const Index = ({ books }) => {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-[30px]">
 
-            <div className="lg:col-span-3 col-span-1">
-                <div className="lg:sticky relative top-[20px]">
+            <div className="relative flex flex-row lg:flex-col justify-between lg:justify-start lg:col-span-3 col-span-1 px-[10px]">
+            <div 
+                className='block lg:hidden absolute top-[0px] right-[10px] bg-slate-300 h-[3rem] w-[3rem] rounded-full flex items-center justify-center font-bold text-2xl'
+                onClick={()=> setToggle(prev => !prev)}>
+                    <BsThreeDots />
+                </div>
+                <div className={`${toggle ? 'block absolute top-[50px] md:top-[70px] right-[10px] z-10' : 'hidden'} lg:block lg:sticky md:relative md:top-[20px]`}>
                     <Categories categories={bookCategories} path='medical-books' />
                 </div>
             </div>
 
-            <div className="flex flex-wrap lg:col-span-8 col-span-1">
+            <div className="flex flex-col md:flex-row flex-wrap lg:col-span-8 col-span-1">
                 {
                     data.length !== 0 ? 
                     data?.map(({ name, image, _id, slug,price }) => (

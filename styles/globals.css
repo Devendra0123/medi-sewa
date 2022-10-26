@@ -127,9 +127,34 @@ a {
   position: relative
 }
 
+.product-detail-may-like-wrapper{
+  width: 100%;
+  overflow-x: scroll;
+}
+
 @media screen and (max-width:800px) {
   .hero-banner-right-div{
     display: none
+  }
+  .product-detail-container{
+    display: flex;
+    flex-direction: column;
+   margin: 10px;
+   margin-top: 20px;
+  
+  }
+  .maylike-products-wrapper{
+    margin-top: 20px;
+  }
+
+  .product-detail-may-like-wrapper{
+    width: 100%;
+    overflow-x: scroll;
+  }
+
+  .maylike-products-container{
+    gap: 10px;
+    padding: 20px
   }
 }
 .plus {
@@ -373,7 +398,7 @@ a {
   right: 0;
   top: 0;
   bottom: 0;
-  z-index: 100;
+  z-index: 300;
   /* will-change: transform; */
   transition: all 1s ease-in-out;
 
@@ -488,7 +513,27 @@ padding: 30px 65px;
     clip-path: circle(50% at 80% 60%);
     z-index: 1;
   }
+  .cart-container{
+    width: 100%;
+    
+  }
 
+  .product-card{   
+   margin-left: 0px;
+  }
+.track-margin{
+  gap: 40px;
+  padding: 20px;
+}
+
+.product-detail-image{
+  width: 350px;
+  height: 400px;
+}
+
+.product-detail-desc{
+  padding: 20px;
+}
   @keyframes marquee {
     from { transform: translateX(0); }
     to { transform: translateX(-150%); }

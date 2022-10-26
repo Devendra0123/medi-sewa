@@ -3,8 +3,8 @@ import { useRouter } from 'next/router'
 import { Categories, Product } from '../../components';
 import { client } from '../../lib/client';
 import { productCategories } from '../../utils/categories';
-import {searchQuery} from '../../utils/query'
 import { IoMdSearch } from 'react-icons/io';
+import {BsThreeDots} from 'react-icons/bs';
 
 const Index = ({ products }) => {
     const router = useRouter();
@@ -12,6 +12,7 @@ const Index = ({ products }) => {
     const [data, setData] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(false);
+    const [toggle, setToggle] = useState(false)
 
     useEffect(() => {
         if (searchTerm !== '') {
@@ -30,6 +31,7 @@ const Index = ({ products }) => {
       }, [searchTerm]);
 
     useEffect(() => {
+        setToggle(false)
         const category = router.query.category;
         const subCategory = router.query.subcategory;
         if(category && subCategory){
@@ -49,8 +51,8 @@ const Index = ({ products }) => {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-[30px]">
 
-            <div className="lg:col-span-3 col-span-1">
-                <div className="flex justify-start items-center w-full px-2 rounded-md bg-white border-2 border-orange-300 outline-none shadow-xl">
+            <div className="relative flex flex-row lg:flex-col justify-between lg:justify-start lg:col-span-3 col-span-1 px-[10px]">
+                <div className="flex justify-start items-center w-3/5 lg:w-full h-12 px-2 rounded-md bg-white border-2 border-orange-300 outline-none shadow-xl">
                     <IoMdSearch fontSize={21} className="ml-1" />
                     <input
                         type="text"
@@ -60,12 +62,17 @@ const Index = ({ products }) => {
                         className="p-2 w-full bg-white outline-none"
                     />
                 </div>
-                <div className="lg:sticky relative top-[20px]">
+                <div 
+                className='block lg:hidden absolute top-[0px] right-[10px] bg-slate-300 h-[3rem] w-[3rem] rounded-full flex items-center justify-center font-bold text-2xl'
+                onClick={()=> setToggle(prev => !prev)}>
+                    <BsThreeDots />
+                </div>
+                <div className={`${toggle ? 'block absolute top-[50px] md:top-[70px] right-[10px] z-10' : 'hidden'} lg:block lg:sticky md:relative md:top-[20px]`}>
                     <Categories categories={productCategories} path='product' />
                 </div>
             </div>
 
-            <div className="flex flex-wrap lg:col-span-8 col-span-1">
+            <div className="flex flex-col md:flex-row flex-wrap lg:col-span-8 col-span-1">
                 {
                     data.length !== 0 ? 
                     data?.map((item, index) => (

@@ -3,26 +3,26 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { client, urlFor } from '../../lib/client';
 
-const Index = ({ebooks}) => {
+const Index = ({ ebooks }) => {
     return (
-        <div className="bg-red-200 rounded p-[20px]  mt-[50px]" >
-            <div className="flex flex-wrap justify-center gap-[70px]">
-                 
-                        {ebooks.map(({ name, image, _id, slug }) => (
-                            <Link key={_id} href={`/ebook/${slug.current}`}>
-                                <div className='cursor-pointer'>
-                                    <Image
-                                        src={urlFor(image && image).url()}
-                                        width={150}
-                                        height={200}
-                                        className="rounded"
-                                    />
-                                    <p className='font-[poppins] w-[10rem] text-center'>
-                                        {name}
-                                    </p>
-                                </div>
-                            </Link>
-                        ))}
+        <div className="bg-gradient-to-r from-teal-500 rounded p-[20px]  mt-[20px] lg:mt-[50px]" >
+            <div className="flex flex-wrap justify-center gap-[30px] lg:gap-[70px]">
+
+                {ebooks.map(({ name, image, _id, slug }) => (
+                    <Link key={_id} href={`/ebook/${slug.current}`}>
+                        <div className='cursor-pointer'>
+                            <Image
+                                src={urlFor(image && image).url()}
+                                width={150}
+                                height={200}
+                                className="rounded"
+                            />
+                            <p className='font-[poppins] w-[10rem] text-center font-medium'>
+                                {name.length > 15 ? name.slice(0, 15) + '...' : name}
+                            </p>
+                        </div>
+                    </Link>
+                ))}
             </div>
         </div>
     )

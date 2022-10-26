@@ -5,11 +5,11 @@ import Link from 'next/link'
 
 const MedicalBooks = ({ books }) => {
   return (
-    <div>
-      <div className='w-full flex justify-start items-center flex-nowrap overflow-x-scroll md:flex-wrap'>
+    <div className='bg-gradient-to-r from-teal-500 py-[20px]'>
+      <div className='w-full flex justify-start md:justify-center items-center flex-nowrap overflow-x-scroll md:flex-wrap'>
         {books.map(({ name, image, _id, slug, price }) => (
           <Link key={_id} href={`/medical-books/${slug.current}`}>
-            <div className='flex flex-col items-center'>
+            <div className='flex flex-col items-center mt-[20px]'>
               <div className='relative w-max'>
                 <Image
                   src={urlFor(image[0] && image[0]).url()}

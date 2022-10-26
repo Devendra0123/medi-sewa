@@ -16,7 +16,7 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
 
   return (
-    <div className='flex items-center justify-between px-[0px] font-[poppins] md:px-[20px]'>
+    <div className='flex items-center justify-between px-[10px] font-[poppins] md:px-[20px]'>
       <div className='logo-container'>
         <Link href='/'>
           <img

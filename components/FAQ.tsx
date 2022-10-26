@@ -15,8 +15,8 @@ const FAQ = () => {
     const toggleStyle = 'h-0 w-0 transition-all ease-in-out delay-150';
     const activeToggleStyle = 'h-fit w-full transition-all ease-in-out delay-150'
   return (
-    <div className='flex justify-center mt-[70px]'>
-        <div className='flex flex-col w-[80%]'>
+    <div className='flex justify-center mt-[70px] px-[10px]'>
+        <div className='flex flex-col w-full md:w-[80%]'>
             <h2 className='text-center font-bold text-4xl'>
                 Frequently Asked Questions
             </h2>

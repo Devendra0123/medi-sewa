@@ -16,18 +16,18 @@ const HeroBanner: React.FC<Props> = ({ bannerData }) => {
     <div className='hero-banner-container'>
       <div className='circle'></div>
       {/* .... Left Div .... */}
-      <div className='flex flex-col flex-end justify-center items-center w-1/2 h-full z-10 mt-[-60px]'>
+      <div className='w-full flex flex-col flex-end justify-center items-center md:w-1/2 h-full z-10 mt-[-60px]'>
         <div>
           <h2 className='text-3xl'>
-            <span className='text-orange-500 md:text-teal-400 font-bold text-4xl pr-1'>Medisewa</span>
-            brings your products<br /> to your doorstep
+            <span className='text-teal-400 font-bold text-4xl pr-1'>Medisewa</span>
+            brings your products<br /> at your doorstep
           </h2>
           <p className='py-2 leading-5 text-xl'>
-            As fast as your mind<br /> As trustworthy as your heart.
+            Most trusted company by<br /> team of doctors.
             <span className="offer-text">{bannerData[0].offer}</span>
           </p>
           <Link href='/product'>
-            <button className='bg-transparent border-2 border-orange-500 md:border-0 text-orange-500 md:bg-teal-400 py-[12px] px-[13px] rounded md:text-white font-bold mt-[10px] transition ease-in-out duration-300 hover:bg-orange-500 hover:text-white'>
+            <button className='bg-teal-400 py-[12px] px-[13px] rounded font-[poppins] font-bold mt-[10px] transition ease-in-out duration-300 hover:bg-orange-500 hover:text-white'>
               Go to Store
             </button>
           </Link>

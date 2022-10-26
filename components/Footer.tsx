@@ -13,7 +13,7 @@ import Link from 'next/link';
 const Footer = () => {
   const style = 'font-[poppins] p-[5px] cursor-pointer'
   return (
-    <div className='w-full flex flex-col items-center md:flex-row flex-wrap md:justify-evenly mt-[50px] py-[20px]'>
+    <div className='w-full flex flex-col items-center md:flex-row flex-wrap md:justify-evenly mt-[50px] p-[20px]'>
       <div className='w-full md:w-1/4 flex flex-col items-center'>
         <Image src="/logo.png"
           width={150} height={50} alt="logo" />

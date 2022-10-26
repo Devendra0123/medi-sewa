@@ -6,18 +6,18 @@ import Product from './Product'
 
 const SecondHandMarket = ({ products, books }) => {
     return (
-        <div className='flex flex-col items-center mt-[40px] bg-gradient-to-r from-teal-500 p-[20px] rounded-xl'>
+        <div className='flex flex-col items-center mt-[40px] bg-gradient-to-r from-teal-500 p-[10px] md:p-[20px] rounded-xl '>
             <h2 className='text-center font-[poppins] font-bold text-xl'>
                 Second Hand Marketplace
             </h2>
             <p className="font-['lobster'] text-orange-500 text-xl font-medium">
                 Buy second hand products and books at affordable price.
             </p>
-            <div className='w-full flex justify-start items-center flex-nowrap overflow-x-scroll md:flex-wrap'>
+            <div className='w-full p-[20px] flex justify-start md:justify-center items-center flex-nowrap overflow-x-scroll'>
                 {products?.map((product) => <Product key={product._id} product={product} />)}
             </div>
 
-            <div className='w-full flex justify-start items-center flex-nowrap overflow-x-scroll mt-[30px] md:flex-wrap'>
+            <div className='w-full px-[0px] md:p-[20px] flex justify-start md:justify-center items-center flex-nowrap overflow-x-scroll mt-[30px]'>
                 {books?.map(({ name, image, _id, slug, price }) => (
                     <Link key={_id} href={`/medical-books/${slug.current}`}>
                         <div className='flex flex-col items-center'>

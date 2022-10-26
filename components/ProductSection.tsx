@@ -15,12 +15,13 @@ type Props = {
 }
 
 const ProductSection: React.FC<Props> = ({ products, category, store, bgChange }) => {
+
     const image = category == 'scrub' ? doctorImg : category == 'dental-products' ? dentureImg : doctorImg
     return (
-        <div className='flex items-center justify-center mb-[30px]'>
+        <div className='flex flex-col md:flex-row items-center justify-center mb-[30px]'>
 
             {/* ....... Left Div .......*/}
-            <div className={`flex flex-col items-center justify-center ${bgChange ? 'bg-amber-300' : 'bg-teal-400'} w-1/4 h-[25rem] rounded-2xl`}>
+            <div className={`w-full flex flex-col items-center justify-center ${bgChange ? 'bg-amber-300' : 'bg-teal-400'} md:w-1/4 h-[25rem] rounded-2xl`}>
                 <Image src={image} alt='img' width={400} height={300} />
                 <p className='text-center font-[poppins] font-semibold'>
                     {`We deliver best quality ${category} all over Kathmandu and near city.`}
@@ -36,8 +37,8 @@ const ProductSection: React.FC<Props> = ({ products, category, store, bgChange }
             </div>
 
             {/*........Right Div ........*/}
-            <div className='flex items-center'>
-                {products?.map((product) => <Product key={product._id} product={product} />)}
+            <div className='w-full flex justify-start items-center flex-nowrap overflow-x-scroll md:flex-wrap'>
+                {products?.map((product) => <Product key={product?._id} product={product} />)}
             </div>
         </div>
     )

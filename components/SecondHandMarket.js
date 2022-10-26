@@ -13,11 +13,11 @@ const SecondHandMarket = ({ products, books }) => {
             <p className="font-['lobster'] text-orange-500 text-xl font-medium">
                 Buy second hand products and books at affordable price.
             </p>
-            <div className='flex items-center'>
+            <div className='w-full flex justify-start items-center flex-nowrap overflow-x-scroll md:flex-wrap'>
                 {products?.map((product) => <Product key={product._id} product={product} />)}
             </div>
 
-            <div className='flex items-center mt-[30px]'>
+            <div className='w-full flex justify-start items-center flex-nowrap overflow-x-scroll mt-[30px] md:flex-wrap'>
                 {books?.map(({ name, image, _id, slug, price }) => (
                     <Link key={_id} href={`/medical-books/${slug.current}`}>
                         <div className='flex flex-col items-center'>

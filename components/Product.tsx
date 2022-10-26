@@ -11,7 +11,7 @@ type Props = {
 
 const Product: React.FC<Props> = ({ product }) => {
 
-  const src = urlFor(product.image[0] && product.image[0]).url();
+  const src = urlFor(product?.image[0] && product?.image[0]).url();
 
   const {onAdd} = useStateContext();
 

@@ -13,8 +13,8 @@ import Link from 'next/link';
 const Footer = () => {
   const style = 'font-[poppins] p-[5px] cursor-pointer'
   return (
-    <div className='flex justify-evenly mt-[50px] py-[20px]'>
-      <div className='w-1/4 flex flex-col items-center'>
+    <div className='w-full flex flex-col items-center md:flex-row flex-wrap md:justify-evenly mt-[50px] py-[20px]'>
+      <div className='w-full md:w-1/4 flex flex-col items-center'>
         <Image src="/logo.png"
           width={150} height={50} alt="logo" />
         <h1 className='text-orange-400 font-medium text-xl pr-1 text-center'>
@@ -22,7 +22,7 @@ const Footer = () => {
         </h1>
       </div>
 
-      <div>
+      <div className='w-full md:w-1/4'>
         <h2 className='font-bold text-teal-400'>
           Explore
         </h2>
@@ -50,7 +50,7 @@ const Footer = () => {
         </ul>
       </div>
 
-      <div>
+      <div className='w-full md:w-1/4'>
         <h2 className='font-bold text-teal-400'>
           Follow Us
         </h2>
@@ -72,7 +72,7 @@ const Footer = () => {
         </a>
       </div>
 
-      <div>
+      <div className='w-full md:w-1/4'>
         <h2 className='font-bold text-teal-400'>Contact Us</h2>
         <div className='flex items-center'>
           <IoIosCall />

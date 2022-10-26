@@ -38,7 +38,7 @@ const Index = ({ books }) => {
                     data.length !== 0 ? 
                     data?.map(({ name, image, _id, slug,price }) => (
                         <Link key={_id} href={`/medical-books/${slug.current}`}>
-                          <div className='flex flex-col items-center'>
+                          <div className='flex flex-col items-center mb-[20px] cursor-pointer'>
                             <div className='relative w-max'>
                                 <Image
                                     src={urlFor(image[0] && image[0]).url()}

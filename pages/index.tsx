@@ -19,7 +19,7 @@ type Props = {
   oldProducts: ProductType[]
 }
 const Home: React.FC<Props> = ({ scrubProducts,oldProducts,oldBooks, bannerData, dentalProducts, ebooks, pastQuestions,medicalBooks }) => {
- 
+
   return (
     <div className=''>
       <HeroBanner bannerData={bannerData} />
@@ -57,15 +57,18 @@ export const getStaticProps:GetStaticProps = async () => {
   const pastQuestions = await client.fetch(pastQuestionQuery);
 
   const scrubProducts = products.filter((item: any)=> item.categories[0] === 'scrub' && item.newOrOld[0] === 'new');
+  
   const dentalProducts = products.filter((item: any)=> item.categories[0] === 'dental-products' && item.newOrOld[0] === 'new');
+
   const oldProducts = products.filter((item: any)=> item.newOrOld[0] === 'old');
   const oldBooks = medicalBooks.filter((item: any)=> item.newOrOld[0] === 'old');
 
   if(scrubProducts.length > 3) scrubProducts.length = 3;
   if(dentalProducts.length > 3) dentalProducts.length = 3;
-  if(medicalBooks.length > 4) scrubProducts.length = 4;
-  if(oldBooks.length > 4) scrubProducts.length = 4;
-  if(oldProducts.length > 4) scrubProducts.length = 4;
+  if(medicalBooks.length > 4) medicalBooks.length = 4;
+  if(oldBooks.length > 4) oldBooks.length = 4;
+  if(oldProducts.length > 4) oldProducts.length = 4;
+ 
   return {
     props: {
       medicalBooks,scrubProducts,oldProducts,oldBooks, bannerData, dentalProducts, ebooks, pastQuestions

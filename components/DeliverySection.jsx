@@ -30,7 +30,7 @@ const DeliverySection = () => {
     }
     return (
         <div id='deliverySection' className="w-full flex justify-center mt-[70px]">
-            <div className='bg-[#ebebeb] w-[80%] flex items-center justify-evenly p-[20px] rounded-xl'>
+            <div className='bg-[#ebebeb] w-full md:w-[80%] flex flex-col md:flex-row items-center justify-evenly p-[20px] rounded-xl'>
                 <div>
                     <h2 className="font-['lobster'] text-orange-500 font-bold text-2xl tracking-wider">Delivery</h2>
                     <p className="font-['poppins'] text-xl">
@@ -43,7 +43,7 @@ const DeliverySection = () => {
                     </Link>
                 </div>
 
-                <div className='rounded-xl'>
+                <div className='rounded-xl mt-[20px] md:mt-0'>
                     {
                         domLoaded && (
                             <div>

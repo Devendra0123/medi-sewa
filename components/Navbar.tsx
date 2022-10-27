@@ -15,6 +15,9 @@ const Navbar = () => {
 
   const [toggle, setToggle] = useState(false);
 
+  const toggleMenu = ()=>{
+    setToggle(prev => !prev);
+  }
   return (
     <div className='flex items-center justify-between px-[10px] font-[poppins] md:px-[20px]'>
       <div className='logo-container'>
@@ -25,8 +28,7 @@ const Navbar = () => {
             alt='logo' />
         </Link>
       </div>
-      <div className={`${toggle === true ? 'block' : 'hidden'} absolute h-72 bg-white z-200 rounded-lg shadow-2xl p-[20px] top-[70px] right-[30px] flex flex-col justify-evenly md:flex md:h-max md:relative md:flex-row md:top-0 md:right-0 md:bg-transparent md:items-center md:px-[10px] md:p-0 md:shadow-none`}>
-
+      <div className={`${toggle === true ? 'block w-64' : 'hidden'} absolute h-80 bg-white z-200 rounded-lg shadow-2xl p-[20px] top-[70px] right-[30px] flex flex-col justify-evenly md:flex md:w-max md:h-max md:relative md:flex-row md:top-0 md:right-0 md:bg-transparent md:items-center md:px-[10px] md:p-0 md:shadow-none`}>
 
         <div className='relative right-[-20px] top-[-20px] z-1 md:hidden'>
           <div className='absolute right-0 top-0'>
@@ -36,31 +38,42 @@ const Navbar = () => {
         </div>
 
         <div className="dropdown">
-          <Link href='/product'>
+          <Link href='#'>
             <p className='cursor-pointer font-medium text-xl text-teal-400 ml-[20px] hover:underline underline-offset-8 decoration-orange-500 transition ease-in-out delay-150 duration-300'>Store</p>
           </Link>
           <div className="dropdown-content">
-            <Link href="/product">Medical Store</Link>
-            <Link href="/product?category=dental-products">Dental Store</Link>
-            <Link href="/medical-books">Medical Book</Link>
-            <Link href="/second-hand-items">Second Hand Store</Link>
+            <Link href="/product">
+              <p onClick={toggleMenu}>Medical Store</p>
+              </Link>
+            <Link href="/product?category=dental-products">
+              <p onClick={toggleMenu}>Dental Store</p>
+              </Link>
+            <Link href="/medical-books">
+              <p onClick={toggleMenu}>Medical Book</p>
+              </Link>
+            <Link href="/second-hand-items">
+              <p onClick={toggleMenu}>Second Hand Store</p>
+              </Link>
           </div>
         </div>
        
         <Link href='/product?category=scrub'>
-          <p className='cursor-pointer font-medium text-xl text-teal-400 ml-[20px] hover:underline underline-offset-8 decoration-orange-500 transition ease-in-out delay-150 duration-300'>Scrub</p>
+          <p onClick={toggleMenu} className='cursor-pointer font-medium text-xl text-teal-400 ml-[20px] hover:underline underline-offset-8 decoration-orange-500 transition ease-in-out delay-150 duration-300'>Scrub</p>
         </Link>
 
         <Link href='/ebook'>
-          <p className='cursor-pointer font-medium text-xl text-teal-400 ml-[20px] hover:underline underline-offset-8 decoration-orange-500 transition ease-in-out delay-150 duration-300'>Ebook</p>
+          <p onClick={toggleMenu} className='cursor-pointer font-medium text-xl text-teal-400 ml-[20px] hover:underline underline-offset-8 decoration-orange-500 transition ease-in-out delay-150 duration-300'>Ebook</p>
         </Link>
 
         <Link href='/past-question'>
-          <p className='cursor-pointer font-medium text-xl text-teal-400 ml-[20px] hover:underline underline-offset-8 decoration-orange-500 transition ease-in-out delay-150 duration-300'>Past Question</p>
+          <p onClick={toggleMenu} className='cursor-pointer font-medium text-xl text-teal-400 ml-[20px] hover:underline underline-offset-8 decoration-orange-500 transition ease-in-out delay-150 duration-300'>Past Question</p>
         </Link>
 
         <div
-          onClick={() => setShowCart(true)}
+          onClick={() => {
+            setShowCart(true);
+            setToggle(prev => !prev)
+          }}
           className='relative flex items-center pt-[20px] pb-[10px] md:p-0'>
           <button
             className='font-bold text-xl text-teal-400 ml-[20px]'>
@@ -107,7 +120,7 @@ const Navbar = () => {
             </div>
           ) :
             <Link href='/user/signup'>
-              <button className='transition ease-in-out bg-orange-600 px-[10px] py-[6px] rounded text-white ml-[20px] hover:-translate-y-1 hover:scale-110 hover:bg-orange-500 duration-300'>
+              <button onClick={toggleMenu} className='transition ease-in-out bg-orange-600 px-[10px] py-[6px] rounded text-white ml-[20px] hover:-translate-y-1 hover:scale-110 hover:bg-orange-500 duration-300'>
                 Sign Up
               </button>
             </Link>
@@ -116,7 +129,7 @@ const Navbar = () => {
       </div>
 
       <div className='md:hidden'>
-        <RiMenu3Line onClick={() => setToggle(prev => !prev)} className='font-bold text-4xl text-orange-500 cursor-pointer' />
+        <RiMenu3Line onClick={toggleMenu} className='font-bold text-4xl text-orange-500 cursor-pointer' />
       </div>
 
       {showCart && <Cart />}

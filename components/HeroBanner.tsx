@@ -16,7 +16,7 @@ const HeroBanner: React.FC<Props> = ({ bannerData }) => {
     <div className='hero-banner-container'>
       <div className='circle'></div>
       {/* .... Left Div .... */}
-      <div className='w-full flex flex-col flex-end justify-center items-center md:w-1/2 h-full z-10 mt-[-60px]'>
+      <div className='w-full flex flex-col flex-end justify-center items-center md:w-1/2 h-full z-10 mt-[-80px] md:mt-[-60px]'>
         <div>
           <h2 className='text-3xl'>
             <span className='text-teal-400 font-bold text-4xl pr-1'>Medisewa</span>

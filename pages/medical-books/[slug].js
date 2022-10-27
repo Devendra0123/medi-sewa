@@ -113,7 +113,6 @@ export const getStaticProps = async ({ params: { slug } }) => {
 
     const book = await client.fetch(query);
     const books = await client.fetch(booksQuery);
-    console.log(book)
 
     return {
         props: { book, books }

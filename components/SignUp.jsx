@@ -82,25 +82,25 @@ const SignUp = () => {
                     <p className='text-center p-[10px] font-bold'>OR</p>
 
                     <div className='w-full flex flex-col items-center'>
-                        <div className='w-[80%] flex items-center justify-between p-[10px] shadow-lg mb-[10px]'>
+                        <div className='w-full md:w-[80%] flex items-center justify-between p-[10px] shadow-lg mb-[10px]'>
                             <input className='grow outline-none'
                                 onChange={(e) => setUserName(e.target.value)}
                                 type='text' placeholder='Enter full name' />
                             <svg xmlns="http://www.w3.org/2000/svg" fill="orange" width="24" height="24" viewBox="0 0 24 24"><path d="M19 7.001c0 3.865-3.134 7-7 7s-7-3.135-7-7c0-3.867 3.134-7.001 7-7.001s7 3.134 7 7.001zm-1.598 7.18c-1.506 1.137-3.374 1.82-5.402 1.82-2.03 0-3.899-.685-5.407-1.822-4.072 1.793-6.593 7.376-6.593 9.821h24c0-2.423-2.6-8.006-6.598-9.819z" /></svg>
                         </div>
-                        <div className='w-[80%] flex items-center justify-between p-[10px] shadow-lg mb-[10px]'>
+                        <div className='w-full md:w-[80%] flex items-center justify-between p-[10px] shadow-lg mb-[10px]'>
                             <input className='grow outline-none'
                                 onChange={(e) => setEmail(e.target.value)}
                                 type='email' placeholder='Enter email' />
                             <svg xmlns="http://www.w3.org/2000/svg" fill='orange' width="24" height="24" viewBox="0 0 24 24"><path d="M22 5v14h-20v-14h20zm2-2h-24v18h24v-18zm-2 16l-6.526-6.618-3.445 3.483-3.418-3.525-6.611 6.66 5.051-8-5.051-6 10.029 7.446 9.971-7.446-4.998 6.01 4.998 7.99z"/></svg>
                         </div>
-                        <div className='w-[80%] flex items-center justify-between p-[10px] shadow-lg mb-[10px]'>
+                        <div className='w-full md:w-[80%] flex items-center justify-between p-[10px] shadow-lg mb-[10px]'>
                             <input className='outline-none grow'
                                 onChange={(e) => setPassword(e.target.value)}
                                 type='password' placeholder='Enter password' />
                             <svg xmlns="http://www.w3.org/2000/svg" fill="orange" width="24" height="24" viewBox="0 0 24 24"><path d="M12.451 17.337l-2.451 2.663h-2v2h-2v2h-6v-1.293l7.06-7.06c-.214-.26-.413-.533-.599-.815l-6.461 6.461v-2.293l6.865-6.949c1.08 2.424 3.095 4.336 5.586 5.286zm11.549-9.337c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm-3-3c0-1.104-.896-2-2-2s-2 .896-2 2 .896 2 2 2 2-.896 2-2z" /></svg>
                         </div>
-                        <div className='w-[80%] flex items-center justify-between p-[10px] shadow-lg mb-[10px]'>
+                        <div className='w-full md:w-[80%] flex items-center justify-between p-[10px] shadow-lg mb-[10px]'>
                             <input className='outline-none grow'
                                 onChange={(e) => setConfirmPassword(e.target.value)}
                                 type='password' placeholder='Confirm password' />

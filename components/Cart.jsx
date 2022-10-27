@@ -78,7 +78,7 @@ const Cart = () => {
               <h3>Rs.{totalPrice}</h3>
             </div>
             <Link href={'/order/shipping-details'} className="w-full flex justify-center mt-[30px]">
-              <button type="button" className="w-96 px-[15px] py-[12px] bg-orange-400 font-medium">
+              <button type="button" onClick={()=>setShowCart(false)} className="w-80 md:w-96 px-[15px] py-[12px] bg-orange-400 font-medium">
                 Place Order
               </button>
             </Link>

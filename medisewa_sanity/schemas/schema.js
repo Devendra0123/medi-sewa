@@ -10,10 +10,11 @@ import user from './user';
 import pastYearQuestions from './pastYearQuestions';
 import order from './order';
 import medicalBook from './medicalBook';
+import orderData from './orderData';
 
 export default createSchema({
   name: 'default',
   types: schemaTypes.concat([
-    product,medicalBook, banner, ebook, blog, user, pastYearQuestions, order
+    product,medicalBook, banner, ebook, blog, user, pastYearQuestions,orderData, order
   ]),
 })

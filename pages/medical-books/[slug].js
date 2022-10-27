@@ -11,7 +11,7 @@ const BookDetails = ({ books, book }) => {
     const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
 
     const handleBuyNow = () => {
-        onAdd(product, qty);
+        onAdd(book, qty);
 
         setShowCart(true);
     }
@@ -44,7 +44,7 @@ const BookDetails = ({ books, book }) => {
                         </p>
                     </div>
                     <div className="buttons">
-                        <button type="button" className="add-to-cart" onClick={() => onAdd(product, qty)}>Add to Cart</button>
+                        <button type="button" className="add-to-cart" onClick={() => onAdd(book, qty)}>Add to Cart</button>
                         <button type="button" className="buy-now" onClick={handleBuyNow}>Buy Now</button>
                     </div>
                 </div>
@@ -56,7 +56,7 @@ const BookDetails = ({ books, book }) => {
                     <div className="marquee">
                         <div className="maylike-products-container track">
                             {books?.map(({ name, image, _id, slug }) => (
-                                <Link key={_id} href={`/book/${slug.current}`}>
+                                <Link key={_id} href={`/medical-books/${slug.current}`}>
                                     <div className='flex flex-col items-center'>
                                         <Image
                                             src={urlFor(image[0] && image[0]).url()}
@@ -102,12 +102,15 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params: { slug } }) => {
     const query = `*[_type == "medical-books" && slug.current == '${slug}'][0] {
+        _id,
+        _rev,
         name,
         image,
         description,
         author,
         publication,
-        price
+        price,
+        newOrOld
       }`;
     const booksQuery = '*[_type == "medical-books"]'
 

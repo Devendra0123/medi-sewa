@@ -5,6 +5,7 @@ import { useStateContext } from '../context/StateContext';
 import { useRouter } from 'next/router';
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
+import Loader from './Loader';
 
 const SignUp = () => {
 
@@ -16,11 +17,12 @@ const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [processing, setProcessing] = useState(false)
 
     const handleSignup = async () => {
-
+        
         if (userName && email && password && confirmPassword) {
-
+            setProcessing(true);
             const doc = {
                 _type: 'user',
                 userName,
@@ -39,14 +41,14 @@ const SignUp = () => {
                         image: "",
                     })
                 }
-
+                setProcessing(false);
                 toast.success(`acount created successfully`);
-                // router.push('/')
+                router.push('/');
 
             }
 
             catch (error) {
-                console.log(error)
+                setProcessing(false);
                 if (error.response.status === 403) {
                     toast.error(`User Already Exists`);
                     return;
@@ -56,7 +58,7 @@ const SignUp = () => {
                 }
             }
         }
-        else{
+        else {
             toast.error(`Please fill all the fields.`);
         }
     }
@@ -92,7 +94,7 @@ const SignUp = () => {
                             <input className='grow outline-none'
                                 onChange={(e) => setEmail(e.target.value)}
                                 type='email' placeholder='Enter email' />
-                            <svg xmlns="http://www.w3.org/2000/svg" fill='orange' width="24" height="24" viewBox="0 0 24 24"><path d="M22 5v14h-20v-14h20zm2-2h-24v18h24v-18zm-2 16l-6.526-6.618-3.445 3.483-3.418-3.525-6.611 6.66 5.051-8-5.051-6 10.029 7.446 9.971-7.446-4.998 6.01 4.998 7.99z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill='orange' width="24" height="24" viewBox="0 0 24 24"><path d="M22 5v14h-20v-14h20zm2-2h-24v18h24v-18zm-2 16l-6.526-6.618-3.445 3.483-3.418-3.525-6.611 6.66 5.051-8-5.051-6 10.029 7.446 9.971-7.446-4.998 6.01 4.998 7.99z" /></svg>
                         </div>
                         <div className='w-full md:w-[80%] flex items-center justify-between p-[10px] shadow-lg mb-[10px]'>
                             <input className='outline-none grow'
@@ -107,13 +109,19 @@ const SignUp = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" fill="orange" width="24" height="24" viewBox="0 0 24 24"><path d="M12.451 17.337l-2.451 2.663h-2v2h-2v2h-6v-1.293l7.06-7.06c-.214-.26-.413-.533-.599-.815l-6.461 6.461v-2.293l6.865-6.949c1.08 2.424 3.095 4.336 5.586 5.286zm11.549-9.337c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm-3-3c0-1.104-.896-2-2-2s-2 .896-2 2 .896 2 2 2 2-.896 2-2z" /></svg>
                         </div>
 
-                        <button type='button' onClick={handleSignup}
-                            className='w-[7rem] bg-teal-400 py-[10px] px-[20px] my-[10px] font-bold'>
-                            Sign Up
-                        </button>
+                        <div className='w-[7rem] h-[3rem] flex items-center justify-center text-center bg-teal-400 py-[10px] px-[20px] my-[10px] font-bold'>
+                            {
+                                processing ? <Loader /> : (
+                                    <button type='button' onClick={handleSignup}>
+                                        Sign Up
+                                    </button>
+                                )
+                            }
+                        </div>
+
                     </div>
 
-                    <button type='button' onClick={()=>router.push('/user/login')}
+                    <button type='button' onClick={() => router.push('/user/login')}
                         className='w-[7rem] py-[10px] px-[20px] my-[10px] border-2 border-teal-400 font-bold'>
                         Login
                     </button>

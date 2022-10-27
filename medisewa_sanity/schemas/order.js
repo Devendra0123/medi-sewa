@@ -44,7 +44,7 @@ export default {
             name: 'items',
             title: 'Items',
             type: 'array',
-            of: [{type: 'product'}]
+            of: [{type: 'orderData'}]
         },
 
     ]

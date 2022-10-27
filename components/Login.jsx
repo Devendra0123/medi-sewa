@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
 import emailjs from '@emailjs/browser';
+import Loader from './Loader';
 
 const Login = () => {
 
@@ -16,13 +17,14 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [resetEmailSuccess, setResetEmailSuccess] = useState(false)
+    const [processing, setProcessing] = useState(false);
 
     const password_reset_url = `http://localhost:3000/user/reset-password`
 
     const handleLogin = async () => {
 
         if (email && password) {
-
+            setProcessing(true);
             const doc = {
                 email,
                 password
@@ -40,14 +42,14 @@ const Login = () => {
                         image: "",
                     })
                 }
-
+                setProcessing(false);
                 toast.success(`Logged in successfully`);
-                // router.push('/')
+                router.push('/')
 
             }
 
             catch (error) {
-                console.log(error)
+                setProcessing(false);
                 if (error.response.status === 400) {
                     toast.error(`Email or password did not match`);
                     return;
@@ -163,11 +165,15 @@ const Login = () => {
                         </div>
 
                         <p onClick={() => setForgotPassword(true)} className='py-[5px] cursor-pointer hover:underline'>Forgot password?</p>
-
-                        <button type='button' onClick={handleLogin}
-                            className='w-[7rem] bg-teal-400 py-[10px] px-[20px] my-[10px] font-bold'>
-                            Login
-                        </button>
+                        <div className='w-[7rem] h-[3rem] flex items-center justify-center text-center bg-teal-400 py-[10px] px-[20px] my-[10px] font-bold'>
+                            {
+                                processing ? <Loader /> : (
+                                    <button type='button' onClick={handleLogin}>
+                                        Login
+                                    </button>
+                                )
+                            }
+                        </div>
                     </div>
 
                     <button type='button' onClick={() => router.push('/user/signup')}

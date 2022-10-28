@@ -13,7 +13,7 @@ const SecondHandMarket = ({ products, books }) => {
             <p className="font-['lobster'] text-orange-500 text-xl font-medium">
                 Buy second hand products and books at affordable price.
             </p>
-            <div className='w-full p-[20px] gap-x-[20px] flex justify-start md:justify-center items-center flex-nowrap overflow-x-scroll'>
+            <div className='w-full md:w-9/12 p-[20px] gap-x-[20px] flex justify-start lg:justify-center items-center flex-nowrap overflow-x-scroll'>
                 {products?.map((product) => <Product key={product._id} product={product} />)}
             </div>
 

@@ -17,6 +17,7 @@ module.exports = {
         lobster: ["Lobster", "sans-serif"],
       },
       zIndex: {
+        '300': '300',
         '200': '200',
       }
     },

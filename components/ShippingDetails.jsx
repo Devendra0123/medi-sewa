@@ -1,18 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState,useRef, useEffect } from 'react';
 import axios from 'axios';
 import { useStateContext } from '../context/StateContext';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/router';
 import Loader from './Loader';
+import emailjs from '@emailjs/browser';
+
 const ShippingDetails = () => {
   const router = useRouter();
+  const form = useRef();
+
   const { totalQuantities, totalPrice, cartItems } = useStateContext();
 
   const [customerName, setCustomerName] = useState('');
   const [email, setEmail] = useState('');
   const [location, setLocation] = useState('');
   const [contactNumber, setContactNumber] = useState('');
-  const [processing, setProcessing] = useState(false)
+  const [processing, setProcessing] = useState(false);
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    const mailMessage = `
+    <h2>You received an order.</h2>
+    <p>Customer Name: <span>${customerName}</span></p>
+    <p>Customer contact: <span>${contactNumber}</span></p>
+    <p>Customer Email: <span>${email}</span></p>
+    <p>Customer location: <span>${location}</span></p>
+    <p> Check order at: ${process.env.NEXT_PUBLIC_SANITY_STUDIO_URL}</p>
+ `
+ setMessage(mailMessage)
+  }, [customerName,email,location,contactNumber])
+  
+  const handleMail = async () => {
+    try{
+      await emailjs.sendForm(process.env.NEXT_PUBLIC_MAILJS_SERVICE_ID, process.env.NEXT_PUBLIC_MAILJS_TEMPLATE_ID, form.current, process.env.NEXT_PUBLIC_MAILJS_PUBLIC_KEY)
+    }
+    catch(error){
+      toast.error(`Something went wrong. Try again`)
+    }
+}
 
   const handleOrder = async () => {
     if (customerName && email && location && contactNumber) {
@@ -38,6 +64,7 @@ const ShippingDetails = () => {
         })
       }
       try {
+        handleMail();
         await axios.post(`/api/order`, doc);
         setProcessing(false);
         toast.success(`Order Successful`);
@@ -101,6 +128,15 @@ const ShippingDetails = () => {
           }
         </div>
       </div>
+
+      <form ref={form} onSubmit={handleMail} className='hidden'>
+
+        <input type="text" name="user_name" readOnly value={customerName} />
+
+        <input type="email" name="user_email" readOnly value={process.env.NEXT_PUBLIC_MEDISEWA_MAIL} />
+
+        <textarea name="message" readOnly value={`${message}`} className='hidden' />
+      </form>
     </div>
   )
 }

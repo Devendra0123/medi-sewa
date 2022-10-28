@@ -19,7 +19,7 @@ const Login = () => {
     const [resetEmailSuccess, setResetEmailSuccess] = useState(false)
     const [processing, setProcessing] = useState(false);
 
-    const password_reset_url = `http://localhost:3000/user/reset-password`
+    const password_reset_url = `${process.env.NEXT_PUBLIC_URL}/user/reset-password`
 
     const handleLogin = async () => {
 
@@ -31,7 +31,7 @@ const Login = () => {
             }
             try {
                 const response = await axios.post(`/api/auth/login`, doc);
-                console.log(response)
+              
                 if (response.status === 200) {
                     const { userName, email, _id } = response.data;
                     addUser({
@@ -92,7 +92,7 @@ const Login = () => {
 
             {
                 forgotPassword && (
-                    <div className='w-[25rem] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-white z-10 p-[20px] rounded font-medium text-xl z-[200]'>
+                    <div className='w-[25rem] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-white z-10 p-[20px] rounded font-medium text-xl z-[300]'>
                         <p className='text-center font-medium text-red-500'>Forgot Your Password?</p>
                         <div className='flex gap-[10px] justify-center mt-[10px]'>
                             {
@@ -114,7 +114,7 @@ const Login = () => {
 
                                             <input type="email" placeholder='Enter email' name="user_email" className='w-full p-[5px] outline-none rounded shadow-xl' />
 
-                                            <textarea name="message" readOnly placeholder='Enter message' value={`Click on the link to reset password: ${password_reset_url}`} className='hidden' />
+                                            <textarea name="message" readOnly placeholder='Enter message' value={`<p>Click on the link to reset password:${password_reset_url}</p>`} className='hidden' />
 
                                             <button type='button'
                                                 onClick={() => {
@@ -164,7 +164,10 @@ const Login = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" fill="orange" width="24" height="24" viewBox="0 0 24 24"><path d="M12.451 17.337l-2.451 2.663h-2v2h-2v2h-6v-1.293l7.06-7.06c-.214-.26-.413-.533-.599-.815l-6.461 6.461v-2.293l6.865-6.949c1.08 2.424 3.095 4.336 5.586 5.286zm11.549-9.337c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm-3-3c0-1.104-.896-2-2-2s-2 .896-2 2 .896 2 2 2 2-.896 2-2z" /></svg>
                         </div>
 
-                        <p onClick={() => setForgotPassword(true)} className='py-[5px] cursor-pointer hover:underline'>Forgot password?</p>
+                        <p onClick={() => {
+                            setForgotPassword(true);
+                            setResetEmailSuccess(false);
+                            }} className='py-[5px] cursor-pointer hover:underline'>Forgot password?</p>
                         <div className='w-[7rem] h-[3rem] flex items-center justify-center text-center bg-teal-400 py-[10px] px-[20px] my-[10px] font-bold'>
                             {
                                 processing ? <Loader /> : (

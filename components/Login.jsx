@@ -31,7 +31,7 @@ const Login = () => {
             }
             try {
                 const response = await axios.post(`/api/auth/login`, doc);
-              
+
                 if (response.status === 200) {
                     const { userName, email, _id } = response.data;
                     addUser({
@@ -145,8 +145,11 @@ const Login = () => {
 
                 <div className='flex flex-col items-center w-full'>
                     <GoogleLogin
-                        onSuccess={(response) => createOrGetUser(response, addUser)}
-                        onError={() => console.log('Login Failed')}
+                        onSuccess={(response) => {
+                            createOrGetUser(response, addUser)
+                            router.push('/')
+                        }}
+                        onError={() => toast.error('Login Failed')}
                     />
                     <p className='text-center p-[10px] font-bold'>OR</p>
 
@@ -167,7 +170,7 @@ const Login = () => {
                         <p onClick={() => {
                             setForgotPassword(true);
                             setResetEmailSuccess(false);
-                            }} className='py-[5px] cursor-pointer hover:underline'>Forgot password?</p>
+                        }} className='py-[5px] cursor-pointer hover:underline'>Forgot password?</p>
                         <div className='w-[7rem] h-[3rem] flex items-center justify-center text-center bg-teal-400 py-[10px] px-[20px] my-[10px] font-bold'>
                             {
                                 processing ? <Loader /> : (

@@ -20,7 +20,7 @@ const SignUp = () => {
     const [processing, setProcessing] = useState(false)
 
     const handleSignup = async () => {
-        
+
         if (userName && email && password && confirmPassword) {
             setProcessing(true);
             const doc = {
@@ -78,8 +78,11 @@ const SignUp = () => {
 
                 <div className='flex flex-col items-center w-full'>
                     <GoogleLogin
-                        onSuccess={(response) => createOrGetUser(response, addUser)}
-                        onError={() => console.log('Login Failed')}
+                        onSuccess={(response) => {
+                            createOrGetUser(response, addUser)
+                            router.push('/')
+                        }}
+                        onError={() => toast.error('Login Failed')}
                     />
                     <p className='text-center p-[10px] font-bold'>OR</p>
 

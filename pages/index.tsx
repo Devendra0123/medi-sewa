@@ -72,7 +72,8 @@ export const getStaticProps:GetStaticProps = async () => {
   return {
     props: {
       medicalBooks,scrubProducts,oldProducts,oldBooks, bannerData, dentalProducts, ebooks, pastQuestions
-    }
+    },
+    revalidate: 10,
   }
 }
 export default Home

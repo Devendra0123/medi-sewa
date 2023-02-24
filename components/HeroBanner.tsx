@@ -41,7 +41,8 @@ const HeroBanner: React.FC<Props> = ({ bannerData }) => {
       {/* .... Right Div .... */}
       <div className='hero-banner-right-div'>
         <Image className='hidden md:block ' src={src} alt='img'
-          layout='fill'
+          width={350}
+          height={350}
         />
         <div className='absolute top-[-20px] left-[-30px]'>
           <div className='plus-circle'>
